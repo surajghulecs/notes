@@ -46,4 +46,30 @@ Starting metastore schema initialization to 3.1.0
 Initialization script hive-schema-3.1.0.derby.sql
 
 
+
+
+
+***********
+(base) surajghule@localhost conf % $HIVE_HOME/bin/schematool -initSchema -dbType derby
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/Users/surajghule/hive/lib/log4j-slf4j-impl-2.17.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/homebrew/Cellar/hadoop/3.4.0/libexec/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Metastore connection URL:	 jdbc:derby:;databaseName=metastore_db;create=true
+Metastore Connection Driver :	 org.apache.derby.jdbc.EmbeddedDriver
+Metastore connection User:	 APP
+Starting metastore schema initialization to 3.1.0
+Initialization script hive-schema-3.1.0.derby.sql
+
+
+Error: FUNCTION 'NUCLEUS_ASCII' already exists. (state=X0Y68,code=30000)
+org.apache.hadoop.hive.metastore.HiveMetaException: Schema initialization FAILED! Metastore state would be inconsistent !!
+Underlying cause: java.io.IOException : Schema script failed, errorcode 2
+Use --verbose for detailed stacktrace.
+*** schemaTool failed ***
+
+Solution:Delete folder metastore_db and rerun the schematool -initSchema -dbType derby
+******
+
  java.sql.SQLException : No suitable driver found for jdbc:derby://localhost:1527/metastore_db;create=true
