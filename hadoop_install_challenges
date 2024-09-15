@@ -1,0 +1,14 @@
+Hadoop installation:
+https://medium.com/@vikramus4/install-and-configure-hadoop-3-3-6-in-mac-os-dd4be4da8846
+
+brew install --cask adoptopenjdk/openjdk/adoptopenjdk8
+
+
+I met the same problem and solved it by doing the following steps:
+
+step 1. remove the hdfs directory (for me it was the default directory "/tmp/hadoop-root/")
+
+rm -rf /tmp/hadoop-root/*
+step 2. run
+
+bin/hdfs namenode -format
