@@ -71,5 +71,15 @@ Use --verbose for detailed stacktrace.
 
 Solution:Delete folder metastore_db and rerun the schematool -initSchema -dbType derby
 ******
-
+Caused by: javax.jdo.JDOFatalDataStoreException: Unable to open a test connection to the given database. JDBC url = jdbc:derby://localhost:1527/metastore_db;create=true, username = APP. Terminating connection pool (set lazyInit to true if you expect to start your database after your app). Original Exception: ------ java.sql.SQLException: No suitable driver found for jdbc:derby://localhost:1527/metastore_db;create=true
  java.sql.SQLException : No suitable driver found for jdbc:derby://localhost:1527/metastore_db;create=true
+
+Solution:
+As you are setting up an embedded metastore database, use the property below as JDBC URL:
+
+<property>
+   <name>javax.jdo.option.ConnectionURL</name>
+   <value>jdbc:derby:metastore_db;create=true </value>
+   <description>JDBC connect string for a JDBC metastore </description>
+</property>
+********
